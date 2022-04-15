@@ -1,0 +1,4 @@
+# use `pip-compile dev-requirements.in` (from pip-tools) to derive dev-requirements.txt
+-c requirements.txt
+black
+pip-tools

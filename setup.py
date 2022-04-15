@@ -8,5 +8,9 @@ setup(
     license='no license',
     author='Anton Shyshko',
     author_email='pozernishku@gmail.com',
-    description='Telegram bots stuff'
+    description='Telegram bots stuff',
+    install_requires=[
+        'python-dotenv',
+        'pytelegrambotapi'
+    ]
 )
