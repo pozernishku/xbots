@@ -10,7 +10,7 @@ charset-normalizer==2.0.12
     # via requests
 idna==3.3
     # via requests
-pytelegrambotapi==4.4.0
+pytelegrambotapi==4.4.1
     # via xbots (setup.py)
 python-dotenv==0.20.0
     # via xbots (setup.py)
