@@ -16,5 +16,7 @@ python-dotenv==0.20.0
     # via xbots (setup.py)
 requests==2.27.1
     # via pytelegrambotapi
+schedule==1.1.0
+    # via xbots (setup.py)
 urllib3==1.26.9
     # via requests

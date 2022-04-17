@@ -12,5 +12,6 @@ setup(
     install_requires=[
         "python-dotenv",
         "pytelegrambotapi",
+        "schedule",
     ],
 )
