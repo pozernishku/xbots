@@ -7,3 +7,10 @@ def admin_user(message: Message, bot: TeleBot):
     You can create a function and use parameter pass_bot.
     """
     bot.send_message(message.chat.id, "Hello, admin!")
+
+
+def is_admin_user(message: Message, bot: TeleBot):
+    """
+    You can create a function and use parameter pass_bot.
+    """
+    bot.send_message(message.chat.id, "Hello, admin!!!!!")
