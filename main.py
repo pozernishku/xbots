@@ -2,7 +2,6 @@ import os
 import threading
 import time
 
-import dotenv
 import schedule
 from telebot import TeleBot
 
@@ -35,7 +34,6 @@ def register_handlers():
 
 
 if __name__ == "__main__":
-    dotenv.load_dotenv()
     bot = TeleBot(os.environ["ANEKDOT_PUB_BOT_TOKEN"], num_threads=5)
     register_handlers()
 

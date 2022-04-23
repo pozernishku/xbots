@@ -1,11 +1,8 @@
 import os
 
-import dotenv
 import schedule
 from telebot import TeleBot
 from telebot.types import Message
-
-dotenv.load_dotenv()
 
 ANEKDOT_PUB = os.environ["ANEKDOT_PUB"]
 
