@@ -7,27 +7,11 @@ from telebot import TeleBot
 
 # Filter. When communicating Me and Bot:
 from anekdot_pub_bot.filters.admin_filter import AdminFilter
-from anekdot_pub_bot.handlers.schedule import set_timer, unset_timer
-from anekdot_pub_bot.handlers.admin import send_welcome_admin
-from anekdot_pub_bot.handlers.user import send_welcome_any_user
-
-
-def register_handlers():
-    bot.register_message_handler(
-        send_welcome_admin, commands=["help", "start"], admin=True, pass_bot=True
-    )
-    bot.register_message_handler(
-        send_welcome_any_user, commands=["help", "start"], admin=False, pass_bot=True
-    )
-    bot.register_message_handler(set_timer, commands=["set"], admin=True, pass_bot=True)
-    bot.register_message_handler(
-        unset_timer, commands=["unset"], admin=True, pass_bot=True
-    )
-
+from anekdot_pub_bot.handlers.common import register_handlers
 
 if __name__ == "__main__":
     bot = TeleBot(os.environ["ANEKDOT_PUB_BOT_TOKEN"], num_threads=5)
-    register_handlers()
+    register_handlers(bot)
 
     # custom filters
     bot.add_custom_filter(AdminFilter())
