@@ -7,10 +7,6 @@ from telebot.types import Message
 ANEKDOT_PUB = os.environ["ANEKDOT_PUB"]
 
 
-def send_welcome(message: Message, bot: TeleBot):
-    bot.reply_to(message, "Hi! Use /set <seconds> to set a timer")
-
-
 def set_timer(message: Message, bot: TeleBot):
     def beep(chat_id) -> None:
         """Send the beep message."""
