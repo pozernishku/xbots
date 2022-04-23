@@ -28,4 +28,4 @@ def set_timer(message: Message, bot: TeleBot):
 
 
 def unset_timer(message: Message, bot: TeleBot):
-    schedule.clear(message.chat.id)
+    schedule.clear(ANEKDOT_PUB)
