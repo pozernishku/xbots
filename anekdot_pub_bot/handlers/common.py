@@ -1,3 +1,6 @@
+import time
+
+import schedule
 from telebot import TeleBot
 
 from anekdot_pub_bot.handlers.admin import send_welcome_admin
@@ -16,3 +19,9 @@ def register_handlers(bot: TeleBot):
     bot.register_message_handler(
         unset_timer, commands=["unset"], admin=True, pass_bot=True
     )
+
+
+def run_pending():
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
