@@ -9,6 +9,7 @@ setup(
     author="Anton Shyshko",
     author_email="pozernishku@gmail.com",
     description="Telegram bots stuff",
+    python_requires=">=3.10",
     install_requires=[
         "python-dotenv",
         "pytelegrambotapi",
