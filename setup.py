@@ -1,9 +1,9 @@
-from setuptools import setup
+from setuptools import find_packages, setup
 
 setup(
     name="xbots",
     version="0.1.0",
-    packages=[""],
+    packages=find_packages(),
     url="https://",
     license="no license",
     author="Anton Shyshko",
