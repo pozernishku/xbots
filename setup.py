@@ -9,7 +9,7 @@ setup(
     author="Anton Shyshko",
     author_email="pozernishku@gmail.com",
     description="Telegram bots stuff",
-    python_requires=">=3.10",
+    python_requires=">=3.9",  # TODO: change to 3.10 (3.9 for pythonanywhere.com)
     install_requires=[
         "python-dotenv",
         "pytelegrambotapi",
