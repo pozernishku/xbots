@@ -3,9 +3,9 @@ import time
 import schedule
 from telebot import TeleBot
 
-from anekdot_pub_bot.handlers.admin import send_welcome_admin
-from anekdot_pub_bot.handlers.schedule import set_timer, unset_timer
-from anekdot_pub_bot.handlers.user import send_welcome_any_user
+from xbots.anekdot_pub_bot.handlers.admin import send_welcome_admin
+from xbots.anekdot_pub_bot.handlers.schedule import set_timer, unset_timer
+from xbots.anekdot_pub_bot.handlers.user import send_welcome_any_user
 
 
 def register_handlers(bot: TeleBot):

@@ -3,8 +3,8 @@ import threading
 
 from telebot import TeleBot
 
-from anekdot_pub_bot.filters.common import add_custom_filters
-from anekdot_pub_bot.handlers.common import register_handlers, run_pending
+from xbots.anekdot_pub_bot.filters.common import add_custom_filters
+from xbots.anekdot_pub_bot.handlers.common import register_handlers, run_pending
 
 if __name__ == "__main__":
     bot = TeleBot(os.environ["ANEKDOT_PUB_BOT_TOKEN"], num_threads=5)

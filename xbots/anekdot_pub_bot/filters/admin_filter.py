@@ -1,6 +1,6 @@
 from telebot.custom_filters import SimpleCustomFilter
 
-from anekdot_pub_bot.models.users_model import Admin
+from xbots.anekdot_pub_bot.models.users_model import Admin
 
 
 class AdminFilter(SimpleCustomFilter):

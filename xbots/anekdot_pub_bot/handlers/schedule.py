@@ -4,7 +4,7 @@ import schedule
 from telebot import TeleBot
 from telebot.types import Message
 
-from anekdot_pub_bot.data.common import get_anekdot
+from xbots.anekdot_pub_bot.data.common import get_anekdot
 
 ANEKDOT_PUB = os.environ["ANEKDOT_PUB"]
 

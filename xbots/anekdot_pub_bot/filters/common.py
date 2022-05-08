@@ -1,6 +1,6 @@
 from telebot import TeleBot
 
-from anekdot_pub_bot.filters.admin_filter import AdminFilter
+from xbots.anekdot_pub_bot.filters.admin_filter import AdminFilter
 
 
 def add_custom_filters(bot: TeleBot):
