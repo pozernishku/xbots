@@ -17,7 +17,11 @@ cryptography==37.0.2
 idna==3.3
     # via requests
 pdfminer.six==20220524
+    # via pdfplumber
+pdfplumber==0.7.1
     # via xbots (setup.py)
+pillow==9.1.1
+    # via pdfplumber
 pycparser==2.21
     # via cffi
 pytelegrambotapi==4.5.0
@@ -30,3 +34,5 @@ schedule==1.1.0
     # via xbots (setup.py)
 urllib3==1.26.9
     # via requests
+wand==0.6.7
+    # via pdfplumber

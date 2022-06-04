@@ -14,6 +14,6 @@ setup(
         "python-dotenv",
         "pytelegrambotapi",
         "schedule",
-        "pdfminer.six",
+        "pdfplumber",
     ],
 )
