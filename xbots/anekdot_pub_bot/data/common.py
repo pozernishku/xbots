@@ -20,6 +20,8 @@ def get_anekdot(bot: TeleBot, chat_id) -> None:
         random_pdf_page = pdf.pages[0]
     # TODO: Try to get rid of the red rectangle borders around the sentences
     pdf_page_image = random_pdf_page.to_image(resolution=150)
+    # TODO: Check if it possible to save the page as pdf first and then convert to image
+    #  in order to fix the red borders
     # im.save("img.png", format="PNG")
     # bot.send_message(chat_id, text=random_pdf_page.extract_text())
     # TODO: Add caption text (from pdf page) to the message
