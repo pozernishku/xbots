@@ -21,7 +21,7 @@ def get_anekdot(bot: TeleBot, chat_id) -> None:
     pdf_page_image = random_pdf_page.to_image(resolution=150)
     # TODO: Check if it possible to save the page as pdf first and then convert to image
     #  in order to fix the red borders
-    # im.save("img.png", format="PNG")
-    # bot.send_message(chat_id, text=random_pdf_page.extract_text())
-    # TODO: Add caption text (from pdf page) to the message
-    bot.send_photo(chat_id, photo=pdf_page_image._repr_png_(), caption="test!")
+    pdf_page_text_piece = f"... {random_pdf_page.extract_text()[:200]} ..."
+    bot.send_photo(
+        chat_id, photo=pdf_page_image._repr_png_(), caption=pdf_page_text_piece
+    )
