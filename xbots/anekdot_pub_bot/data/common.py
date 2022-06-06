@@ -22,6 +22,8 @@ def get_anekdot(bot: TeleBot, chat_id) -> None:
     # TODO: Check if it possible to save the page as pdf first and then convert to image
     #  in order to fix the red borders
     pdf_page_text_piece = f"... {random_pdf_page.extract_text()[:200]} ..."
+    pdf_page_text_piece = pdf_page_text_piece.replace("&", "&amp;")
+    pdf_page_text_piece = pdf_page_text_piece.replace("<", "&lt;").replace(">", "&gt;")
     # TODO: Add direct link to pdf file (or site page, not sure) and page (if possible)
     continue_reading = f'<a href="{pdf_url}">Продолжить чтение</a>'
     bot.send_photo(
