@@ -25,7 +25,6 @@ def get_anekdot(bot: TeleBot, chat_id) -> None:
     pdf_page_text_piece = f"🧩 ... {random_pdf_page.extract_text()[:200]} ..."
     pdf_page_text_piece = pdf_page_text_piece.replace("&", "&amp;")
     pdf_page_text_piece = pdf_page_text_piece.replace("<", "&lt;").replace(">", "&gt;")
-    # TODO: Add direct link to pdf file (or site page, not sure) and page (if possible)
     href = f"{pdf_url}#page={random_page_n + 1}"
     continue_reading = f'<a href="{href}">📖 Продолжить чтение</a>'
     href_file_formats = pdf_url.rsplit("/", 1)[0]
