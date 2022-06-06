@@ -23,6 +23,10 @@ def get_anekdot(bot: TeleBot, chat_id) -> None:
     #  in order to fix the red borders
     pdf_page_text_piece = f"... {random_pdf_page.extract_text()[:200]} ..."
     # TODO: Add direct link to pdf file (or site page, not sure) and page (if possible)
+    continue_reading = f'<a href="{pdf_url}">Продолжить чтение</a>'
     bot.send_photo(
-        chat_id, photo=pdf_page_image._repr_png_(), caption=pdf_page_text_piece
+        chat_id,
+        photo=pdf_page_image._repr_png_(),
+        caption=f"{pdf_page_text_piece}\n\n{continue_reading}",
+        parse_mode="HTML",
     )
