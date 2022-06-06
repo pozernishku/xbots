@@ -16,8 +16,7 @@ def get_anekdot(bot: TeleBot, chat_id) -> None:
     pdf_bytes_io = BytesIO(requests.get(pdf_url).content)
     # BytesIO is acceptable and mentioned in the docs (it's ok that PyCharm warns)
     with pdfplumber.open(pdf_bytes_io) as pdf:
-        # TODO: Get random page below instead of first
-        random_pdf_page = pdf.pages[0]
+        random_pdf_page = pdf.pages[random.randint(0, len(pdf.pages) - 1)]
     # TODO: Try to get rid of the red rectangle borders around the sentences
     pdf_page_image = random_pdf_page.to_image(resolution=150)
     # TODO: Check if it possible to save the page as pdf first and then convert to image
