@@ -3,8 +3,7 @@ import time
 import schedule
 from telebot import TeleBot
 
-from xbots.anekdot_pub_bot.handlers.schedule import set_timer, unset_timer
-from xbots.anekdot_pub_bot.handlers.user import start, any_state
+from xbots.anekdot_pub_bot.handlers.user import any_state, start
 
 
 def register_handlers(bot: TeleBot):
