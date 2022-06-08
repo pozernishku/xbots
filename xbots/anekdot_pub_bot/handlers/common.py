@@ -4,12 +4,13 @@ import schedule
 from telebot import TeleBot
 
 from xbots.anekdot_pub_bot.handlers.schedule import set_timer, unset_timer
-from xbots.anekdot_pub_bot.handlers.user import send_welcome_any_user
+from xbots.anekdot_pub_bot.handlers.user import start, any_state
 
 
 def register_handlers(bot: TeleBot):
+    bot.register_message_handler(start, commands=["start"], pass_bot=True)
     bot.register_message_handler(
-        send_welcome_any_user, commands=["start"], pass_bot=True
+        any_state, state="*", commands=["cancel"], pass_bot=True
     )
 
 
