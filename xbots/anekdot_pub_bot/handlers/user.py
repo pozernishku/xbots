@@ -21,3 +21,13 @@ def start(message: Message, bot: TeleBot):
 def any_state(message: Message, bot: TeleBot):
     bot.send_message(message.chat.id, "Ваши изменения отменены")
     bot.delete_state(message.from_user.id, message.chat.id)
+
+
+def channel(message: Message, bot: TeleBot):
+    # TODO: Handle the min & max values
+    bot.send_message(
+        message.chat.id, "С какой периодичностью (в минутах) публиковать в Ваш канал?"
+    )
+    bot.set_state(message.from_user.id, Register.periodicity, message.chat.id)
+    with bot.retrieve_data(message.from_user.id, message.chat.id) as data:
+        data["channel"] = message.text
