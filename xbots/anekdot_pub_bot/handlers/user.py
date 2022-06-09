@@ -24,6 +24,15 @@ def delete_from_any_state(message: Message, bot: TeleBot):
     bot.delete_state(message.from_user.id, message.chat.id)
 
 
+def show_settings_from_any_state(message: Message, bot: TeleBot):
+    state_context = bot.retrieve_data(message.from_user.id, message.chat.id)
+    if hasattr(state_context, "data") and state_context.data:
+        settings_msg = prepare_settings_message(state_context.data)
+    else:
+        settings_msg = "Бот не настроен. Используйте команду /start для настройки"
+    bot.send_message(message.chat.id, settings_msg)
+
+
 def ask_periodicity(message: Message, bot: TeleBot):
     # TODO: Handle the min & max values
     bot.send_message(
@@ -55,13 +64,4 @@ def show_result(message: Message, bot: TeleBot):
     with bot.retrieve_data(message.from_user.id, message.chat.id) as data:
         data["pdf_list"] = message.text
     settings_msg = prepare_settings_message(data)
-    bot.send_message(message.chat.id, settings_msg)
-
-
-def show_settings_from_any_state(message: Message, bot: TeleBot):
-    state_context = bot.retrieve_data(message.from_user.id, message.chat.id)
-    if hasattr(state_context, "data") and state_context.data:
-        settings_msg = prepare_settings_message(state_context.data)
-    else:
-        settings_msg = "Бот не настроен. Используйте команду /start для настройки"
     bot.send_message(message.chat.id, settings_msg)
