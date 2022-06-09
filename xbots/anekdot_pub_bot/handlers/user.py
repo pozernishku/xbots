@@ -49,7 +49,7 @@ def periodicity_incorrect(message: Message, bot: TeleBot):
     bot.send_message(message.chat.id, "Некорректное значение. Пожалуйста введите число")
 
 
-def show_settings(message: Message, bot: TeleBot):
+def show_result(message: Message, bot: TeleBot):
     with bot.retrieve_data(message.from_user.id, message.chat.id) as data:
         if not data.get("pdf_list"):
             bot.set_state(message.from_user.id, Register.pdf_list, message.chat.id)
