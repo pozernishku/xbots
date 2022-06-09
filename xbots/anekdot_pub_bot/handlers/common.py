@@ -13,7 +13,7 @@ from xbots.anekdot_pub_bot.handlers.user import (
 from xbots.anekdot_pub_bot.states.register_state import Register
 
 
-def register_handlers(bot: TeleBot):
+def register_handlers(bot: TeleBot) -> TeleBot:
     bot.register_message_handler(start, commands=["start"], pass_bot=True)
     bot.register_message_handler(
         any_state, state="*", commands=["cancel"], pass_bot=True
@@ -25,6 +25,7 @@ def register_handlers(bot: TeleBot):
     bot.register_message_handler(
         periodicity_incorrect, state=Register.periodicity, is_digit=False, pass_bot=True
     )
+    return bot
 
 
 def run_pending():

@@ -12,7 +12,7 @@ if __name__ == "__main__":
         num_threads=5,
         state_storage=StatePickleStorage(),
     )
-    register_handlers(bot)
+    bot = register_handlers(bot)
     add_custom_filters(bot)
     threading.Thread(target=run_pending, name="run_pending", daemon=True).start()
     bot.infinity_polling(skip_pending=True)
