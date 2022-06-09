@@ -6,8 +6,8 @@ from telebot import TeleBot
 from xbots.anekdot_pub_bot.handlers.user import (
     any_state,
     ask_channel,
+    ask_pdf_list,
     ask_periodicity,
-    periodicity,
     periodicity_incorrect,
 )
 from xbots.anekdot_pub_bot.states.register_state import Register
@@ -20,7 +20,7 @@ def register_handlers(bot: TeleBot) -> TeleBot:
     )
     bot.register_message_handler(ask_periodicity, state=Register.channel, pass_bot=True)
     bot.register_message_handler(
-        periodicity, state=Register.periodicity, is_digit=True, pass_bot=True
+        ask_pdf_list, state=Register.periodicity, is_digit=True, pass_bot=True
     )
     bot.register_message_handler(
         periodicity_incorrect, state=Register.periodicity, is_digit=False, pass_bot=True

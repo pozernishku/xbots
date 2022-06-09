@@ -33,7 +33,7 @@ def ask_periodicity(message: Message, bot: TeleBot):
         data["channel"] = message.text
 
 
-def periodicity(message: Message, bot: TeleBot):
+def ask_pdf_list(message: Message, bot: TeleBot):
     bot.send_message(
         message.chat.id,
         "Пришлите список PDF-файлов. Каждый файл с новой строки, например:\n"
