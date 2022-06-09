@@ -2,6 +2,7 @@ from telebot import TeleBot
 from telebot.types import Message
 
 from xbots.anekdot_pub_bot.states.register_state import Register
+from xbots.anekdot_pub_bot.utilities import prepare_settings_message
 
 
 def send_welcome_any_user(message: Message, bot: TeleBot):
@@ -54,10 +55,5 @@ def show_result(message: Message, bot: TeleBot):
         if not data.get("pdf_list"):
             bot.set_state(message.from_user.id, Register.pdf_list, message.chat.id)
             data["pdf_list"] = message.text
-            settings_msg = (
-                f"Ваши настройки:\n"
-                f"Канал: {data['channel']}\n"
-                f"Периодичность: {data['periodicity']}\n"
-                f"PDF-файлы: {data['pdf_list']}"
-            )
+            settings_msg = prepare_settings_message(data)
             bot.send_message(message.chat.id, settings_msg)
