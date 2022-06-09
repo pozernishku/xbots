@@ -9,7 +9,7 @@ def send_welcome_any_user(message: Message, bot: TeleBot):
     bot.reply_to(message, "Hi! You're not an admin and cannot set a timer")
 
 
-def start(message: Message, bot: TeleBot):
+def ask_channel(message: Message, bot: TeleBot):
     bot.set_state(message.from_user.id, Register.channel, message.chat.id)
     bot.send_message(
         message.chat.id,
