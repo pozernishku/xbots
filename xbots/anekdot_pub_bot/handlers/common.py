@@ -4,10 +4,10 @@ import schedule
 from telebot import TeleBot
 
 from xbots.anekdot_pub_bot.handlers.user import (
-    any_state,
     ask_channel,
     ask_pdf_list,
     ask_periodicity,
+    delete_from_any_state,
     periodicity_incorrect,
     show_result,
 )
@@ -17,7 +17,7 @@ from xbots.anekdot_pub_bot.states.register_state import Register
 def register_handlers(bot: TeleBot) -> TeleBot:
     bot.register_message_handler(ask_channel, commands=["start"], pass_bot=True)
     bot.register_message_handler(
-        any_state, state="*", commands=["delete"], pass_bot=True
+        delete_from_any_state, state="*", commands=["delete"], pass_bot=True
     )
     bot.register_message_handler(ask_periodicity, state=Register.channel, pass_bot=True)
     bot.register_message_handler(
