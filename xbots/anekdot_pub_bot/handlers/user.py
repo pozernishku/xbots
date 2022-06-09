@@ -60,7 +60,7 @@ def periodicity_incorrect(message: Message, bot: TeleBot):
 
 
 def show_result(message: Message, bot: TeleBot):
-    bot.set_state(message.from_user.id, Register.end, message.chat.id)
+    bot.set_state(message.from_user.id, Register.unhandled_state, message.chat.id)
     with bot.retrieve_data(message.from_user.id, message.chat.id) as data:
         data["pdf_list"] = message.text
     settings_msg = prepare_settings_message(data)

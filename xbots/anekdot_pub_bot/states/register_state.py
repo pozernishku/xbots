@@ -5,4 +5,4 @@ class Register(StatesGroup):
     channel = State()
     periodicity = State()
     pdf_list = State()
-    end = State()
+    unhandled_state = State()
