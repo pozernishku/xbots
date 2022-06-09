@@ -19,7 +19,7 @@ def start(message: Message, bot: TeleBot):
 
 
 def any_state(message: Message, bot: TeleBot):
-    bot.send_message(message.chat.id, "Ваши изменения отменены")
+    bot.send_message(message.chat.id, "Ваши настройки удалены")
     bot.delete_state(message.from_user.id, message.chat.id)
 
 
