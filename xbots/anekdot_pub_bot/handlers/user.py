@@ -47,3 +47,17 @@ def ask_pdf_list(message: Message, bot: TeleBot):
 
 def periodicity_incorrect(message: Message, bot: TeleBot):
     bot.send_message(message.chat.id, "Некорректное значение. Пожалуйста введите число")
+
+
+def show_settings(message: Message, bot: TeleBot):
+    with bot.retrieve_data(message.from_user.id, message.chat.id) as data:
+        if not data.get("pdf_list"):
+            bot.set_state(message.from_user.id, Register.pdf_list, message.chat.id)
+            data["pdf_list"] = message.text
+            settings_msg = (
+                f"Ваши настройки:\n"
+                f"Канал: {data['channel']}\n"
+                f"Периодичность: {data['periodicity']}\n"
+                f"PDF-файлы: {data['pdf_list']}"
+            )
+            bot.send_message(message.chat.id, settings_msg)
