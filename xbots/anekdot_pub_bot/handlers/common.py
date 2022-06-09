@@ -10,6 +10,7 @@ from xbots.anekdot_pub_bot.handlers.user import (
     delete_from_any_state,
     periodicity_incorrect,
     show_result,
+    show_settings_from_any_state,
 )
 from xbots.anekdot_pub_bot.states.register_state import Register
 
@@ -18,6 +19,9 @@ def register_handlers(bot: TeleBot) -> TeleBot:
     bot.register_message_handler(ask_channel, commands=["start"], pass_bot=True)
     bot.register_message_handler(
         delete_from_any_state, state="*", commands=["delete"], pass_bot=True
+    )
+    bot.register_message_handler(
+        show_settings_from_any_state, state="*", commands=["settings"], pass_bot=True
     )
     bot.register_message_handler(ask_periodicity, state=Register.channel, pass_bot=True)
     bot.register_message_handler(
