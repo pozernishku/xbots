@@ -31,3 +31,19 @@ def channel(message: Message, bot: TeleBot):
     bot.set_state(message.from_user.id, Register.periodicity, message.chat.id)
     with bot.retrieve_data(message.from_user.id, message.chat.id) as data:
         data["channel"] = message.text
+
+
+def periodicity(message: Message, bot: TeleBot):
+    bot.send_message(
+        message.chat.id,
+        "Пришлите список PDF-файлов. Каждый файл с новой строки, например:\n"
+        "https://example.com/my-file1.pdf\n"
+        "https://example.com/my-file1.pdf",
+    )
+    bot.set_state(message.from_user.id, Register.pdf_list, message.chat.id)
+    with bot.retrieve_data(message.from_user.id, message.chat.id) as data:
+        data["periodicity"] = message.text
+
+
+def periodicity_incorrect(message: Message, bot: TeleBot):
+    bot.send_message(message.chat.id, "Некорректное значение. Пожалуйста введите число")
