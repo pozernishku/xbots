@@ -56,3 +56,12 @@ def show_result(message: Message, bot: TeleBot):
         data["pdf_list"] = message.text
     settings_msg = prepare_settings_message(data)
     bot.send_message(message.chat.id, settings_msg)
+
+
+def show_settings_from_any_state(message: Message, bot: TeleBot):
+    state_context = bot.retrieve_data(message.from_user.id, message.chat.id)
+    if hasattr(state_context, "data") and state_context.data:
+        settings_msg = prepare_settings_message(state_context.data)
+    else:
+        settings_msg = "Бот не настроен. Используйте команду /start для настройки"
+    bot.send_message(message.chat.id, settings_msg)
