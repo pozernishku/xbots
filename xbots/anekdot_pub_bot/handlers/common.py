@@ -6,7 +6,7 @@ from telebot import TeleBot
 from xbots.anekdot_pub_bot.handlers.user import (
     any_state,
     ask_channel,
-    channel,
+    ask_periodicity,
     periodicity,
     periodicity_incorrect,
 )
@@ -18,7 +18,7 @@ def register_handlers(bot: TeleBot) -> TeleBot:
     bot.register_message_handler(
         any_state, state="*", commands=["delete"], pass_bot=True
     )
-    bot.register_message_handler(channel, state=Register.channel, pass_bot=True)
+    bot.register_message_handler(ask_periodicity, state=Register.channel, pass_bot=True)
     bot.register_message_handler(
         periodicity, state=Register.periodicity, is_digit=True, pass_bot=True
     )

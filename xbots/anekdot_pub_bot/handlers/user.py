@@ -23,7 +23,7 @@ def any_state(message: Message, bot: TeleBot):
     bot.delete_state(message.from_user.id, message.chat.id)
 
 
-def channel(message: Message, bot: TeleBot):
+def ask_periodicity(message: Message, bot: TeleBot):
     # TODO: Handle the min & max values
     bot.send_message(
         message.chat.id, "С какой периодичностью (в минутах) публиковать в Ваш канал?"
