@@ -21,7 +21,10 @@ def ask_channel(message: Message, bot: TeleBot):
 
 
 def delete_settings_from_any_state(message: Message, bot: TeleBot):
-    bot.send_message(message.chat.id, "Ваши настройки удалены")
+    bot.send_message(
+        message.chat.id,
+        "Ваши настройки удалены. Используйте команду /start для настройки",
+    )
     bot.delete_state(message.from_user.id, message.chat.id)
 
 
