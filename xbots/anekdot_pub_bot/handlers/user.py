@@ -14,8 +14,9 @@ def ask_channel(message: Message, bot: TeleBot):
     bot.set_state(message.from_user.id, Register.channel, message.chat.id)
     bot.send_message(
         message.chat.id,
-        "Пришлите ссылку на Ваш канал в котором этот бот является администратором. "
-        "Например: https://t.me/my_channel",
+        "Перешлите сюда <b><i>любой пост</i></b> из Вашего канала и "
+        "<b><i>назначьте бота администратором</i></b>",
+        parse_mode="HTML",
     )
 
 
