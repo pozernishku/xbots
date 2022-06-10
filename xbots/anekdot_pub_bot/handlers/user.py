@@ -44,6 +44,12 @@ def ask_periodicity(message: Message, bot: TeleBot):
         data["channel"] = message.text
 
 
+def channel_incorrect(message: Message, bot: TeleBot):
+    bot.send_message(
+        message.chat.id, "Выберите любой пост в Вашем канале и перешлите его сюда"
+    )
+
+
 def ask_pdf_list(message: Message, bot: TeleBot):
     bot.send_message(
         message.chat.id,
