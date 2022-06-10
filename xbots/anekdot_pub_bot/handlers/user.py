@@ -41,7 +41,9 @@ def ask_periodicity(message: Message, bot: TeleBot):
     )
     bot.set_state(message.from_user.id, Register.periodicity, message.chat.id)
     with bot.retrieve_data(message.from_user.id, message.chat.id) as data:
-        data["channel"] = message.text
+        data["channel"] = {
+            message.forward_from_chat.id: f"@{message.forward_from_chat.username}"
+        }
 
 
 def channel_incorrect(message: Message, bot: TeleBot):
