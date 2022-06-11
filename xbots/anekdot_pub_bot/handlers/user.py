@@ -80,6 +80,7 @@ def show_result(message: Message, bot: TeleBot):
         data["pdf_list"] = re.findall(PDF_URL_LIST_REGEX, message.text)
     settings_msg = prepare_settings_message(data)
     bot.send_message(message.chat.id, settings_msg)
+    # TODO: Is this place good to suggest the /run command - think about it
 
 
 def pdf_list_incorrect(message: Message, bot: TeleBot):
