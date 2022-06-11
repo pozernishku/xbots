@@ -60,7 +60,7 @@ def ask_pdf_list(message: Message, bot: TeleBot):
         message.chat.id,
         "Пришлите список PDF-файлов. Каждый файл с новой строки, например:\n"
         "https://example.com/my-file1.pdf\n"
-        "https://example.com/my-file1.pdf",
+        "https://example.com/my-file2.pdf",
     )
     bot.set_state(message.from_user.id, Register.pdf_list, message.chat.id)
     with bot.retrieve_data(message.from_user.id, message.chat.id) as data:
