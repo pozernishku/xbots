@@ -1,6 +1,9 @@
+import re
+
 from telebot import TeleBot
 from telebot.types import Message
 
+from xbots.anekdot_pub_bot.filters.common import PDF_URL_LIST_REGEX
 from xbots.anekdot_pub_bot.states.register_state import Register
 from xbots.anekdot_pub_bot.utilities import prepare_settings_message
 
@@ -74,6 +77,6 @@ def periodicity_incorrect(message: Message, bot: TeleBot):
 def show_result(message: Message, bot: TeleBot):
     bot.set_state(message.from_user.id, Register.unhandled_state, message.chat.id)
     with bot.retrieve_data(message.from_user.id, message.chat.id) as data:
-        data["pdf_list"] = message.text
+        data["pdf_list"] = re.findall(PDF_URL_LIST_REGEX, message.text)
     settings_msg = prepare_settings_message(data)
     bot.send_message(message.chat.id, settings_msg)
