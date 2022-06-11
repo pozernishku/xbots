@@ -80,3 +80,14 @@ def show_result(message: Message, bot: TeleBot):
         data["pdf_list"] = re.findall(PDF_URL_LIST_REGEX, message.text)
     settings_msg = prepare_settings_message(data)
     bot.send_message(message.chat.id, settings_msg)
+
+
+def pdf_list_incorrect(message: Message, bot: TeleBot):
+    bot.send_message(
+        message.chat.id,
+        "Некорректный список ссылок на PDF-файлы. "
+        "Пришлите одну или несколько ссылок на PDF-файлы (каждый URL с новой строки). "
+        "Например: \n"
+        "https://example.com/my-file1.pdf\n"
+        "https://example.com/my-file2.pdf",
+    )
