@@ -3,6 +3,7 @@ import time
 import schedule
 from telebot import TeleBot
 
+from xbots.anekdot_pub_bot.filters.common import PDF_URL_LIST_REGEX
 from xbots.anekdot_pub_bot.handlers.user import (
     ask_channel,
     ask_pdf_list,
@@ -36,7 +37,13 @@ def register_handlers(bot: TeleBot) -> TeleBot:
     bot.register_message_handler(
         periodicity_incorrect, state=Register.periodicity, is_digit=False, pass_bot=True
     )
-    bot.register_message_handler(show_result, state=Register.pdf_list, pass_bot=True)
+    bot.register_message_handler(
+        show_result,
+        regexp=PDF_URL_LIST_REGEX,
+        state=Register.pdf_list,
+        pass_bot=True,
+    )
+    # TODO: Register one more handler w/o regex to message user if input is incorrect
     return bot
 
 
