@@ -64,7 +64,7 @@ def ask_pdf_list(message: Message, bot: TeleBot):
     )
     bot.set_state(message.from_user.id, Register.pdf_list, message.chat.id)
     with bot.retrieve_data(message.from_user.id, message.chat.id) as data:
-        data["periodicity"] = message.text
+        data["periodicity"] = int(message.text)
 
 
 def periodicity_incorrect(message: Message, bot: TeleBot):
