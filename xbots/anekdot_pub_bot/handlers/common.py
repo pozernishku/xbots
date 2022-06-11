@@ -10,6 +10,7 @@ from xbots.anekdot_pub_bot.handlers.user import (
     ask_periodicity,
     channel_incorrect,
     delete_settings_from_any_state,
+    pdf_list_incorrect,
     periodicity_incorrect,
     show_result,
     show_settings_from_any_state,
@@ -43,7 +44,9 @@ def register_handlers(bot: TeleBot) -> TeleBot:
         state=Register.pdf_list,
         pass_bot=True,
     )
-    # TODO: Register one more handler w/o regex to message user if input is incorrect
+    bot.register_message_handler(
+        pdf_list_incorrect, state=Register.pdf_list, pass_bot=True
+    )
     return bot
 
 
