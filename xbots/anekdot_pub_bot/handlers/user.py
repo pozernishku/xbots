@@ -28,6 +28,7 @@ def delete_settings_from_any_state(message: Message, bot: TeleBot):
         message.chat.id,
         "Ваши настройки удалены. Используйте команду /start для настройки",
     )
+    # TODO: stop (unset_timer)
     bot.delete_state(message.from_user.id, message.chat.id)
 
 
