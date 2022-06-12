@@ -15,5 +15,6 @@ setup(
         "pytelegrambotapi",
         "schedule",
         "pdfplumber",
+        "jmespath",
     ],
 )

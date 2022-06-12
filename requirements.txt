@@ -16,6 +16,8 @@ cryptography==37.0.2
     # via pdfminer-six
 idna==3.3
     # via requests
+jmespath==1.0.0
+    # via xbots (setup.py)
 pdfminer.six==20220524
     # via pdfplumber
 pdfplumber==0.7.1
