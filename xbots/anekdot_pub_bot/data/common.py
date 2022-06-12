@@ -1,5 +1,3 @@
-import json
-import os
 import random
 from io import BytesIO
 
@@ -7,12 +5,10 @@ import pdfplumber
 import requests
 from telebot import TeleBot
 
-PDF_URL_LIST = json.loads(os.environ["PDF_URL_LIST"])
 
-
-def get_anekdot(bot: TeleBot, chat_id) -> None:
+def get_anekdot(bot: TeleBot, chat_id, pdf_list: list) -> None:
     """Send the anekdot message."""
-    pdf_url = random.choice(PDF_URL_LIST)
+    pdf_url = random.choice(pdf_list)
     pdf_bytes_io = BytesIO(requests.get(pdf_url).content)
     # BytesIO is acceptable and mentioned in the docs (it's ok that PyCharm warns)
     with pdfplumber.open(pdf_bytes_io) as pdf:
