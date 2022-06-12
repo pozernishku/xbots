@@ -1,3 +1,10 @@
+import jmespath
+import schedule
+from telebot import TeleBot
+
+from xbots.anekdot_pub_bot.data.common import get_anekdot
+
+
 def prepare_settings_message(data: dict) -> str:
     empty_value = "<пусто>"
     pdf_list = data.get("pdf_list", [])
@@ -19,3 +26,19 @@ def prepare_settings_message(data: dict) -> str:
         ]
     )
     return settings_msg + tip_commands_message
+
+
+def activate_job_schedule_in_channels(bot: TeleBot, debug_activate) -> TeleBot:
+    if not debug_activate:
+        return bot
+    states_data = bot.current_states.data
+    params = jmespath.search("*.*.data[]", states_data)
+    for param in params:
+        # FIXME: Add param validation
+        channel = list(param["channel"].keys())[0]
+        periodicity = param["periodicity"]
+        pdf_list = param["pdf_list"]
+        schedule.every(periodicity).minutes.do(get_anekdot, bot, channel, pdf_list).tag(
+            channel
+        )
+    return bot
