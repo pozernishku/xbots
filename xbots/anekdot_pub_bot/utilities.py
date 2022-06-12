@@ -3,10 +3,11 @@ def prepare_settings_message(data: dict) -> str:
     pdf_list = data.get("pdf_list", [])
     pdf_list_str = "\n".join([f"- {pdf_url}" for pdf_url in pdf_list]) or empty_value
     pdf_list_str = "\n" + pdf_list_str if pdf_list_str != empty_value else pdf_list_str
+    channel = data.get("channel", {empty_value: empty_value}).copy().popitem()
     # TODO: Bold the values
     settings_msg = (
         f"Ваши настройки:\n"
-        f"Канал: {data.get('channel', empty_value)}\n"
+        f"Канал: {channel[1]} ({channel[0]})\n"
         f"Периодичность, мин: {data.get('periodicity', empty_value)}\n"
         f"PDF-файлы: {pdf_list_str}"
     )
