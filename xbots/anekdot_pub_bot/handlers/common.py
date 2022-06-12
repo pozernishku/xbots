@@ -33,10 +33,16 @@ def register_handlers(bot: TeleBot) -> TeleBot:
         channel_incorrect, is_forwarded=False, state=Register.channel, pass_bot=True
     )
     bot.register_message_handler(
-        ask_pdf_list, state=Register.periodicity, is_digit=True, pass_bot=True
+        ask_pdf_list,
+        state=Register.periodicity,
+        is_correct_periodicity=True,
+        pass_bot=True,
     )
     bot.register_message_handler(
-        periodicity_incorrect, state=Register.periodicity, is_digit=False, pass_bot=True
+        periodicity_incorrect,
+        state=Register.periodicity,
+        is_correct_periodicity=False,
+        pass_bot=True,
     )
     bot.register_message_handler(
         show_result,
