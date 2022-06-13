@@ -1,5 +1,6 @@
-from functools import partial
+import queue
 import threading
+from functools import partial
 
 import jmespath
 import schedule
@@ -36,6 +37,16 @@ def run_threaded(job_func):
     job_thread.start()
 
 
+job_queue = queue.Queue()
+
+
+def worker_main():
+    while True:
+        job_func = job_queue.get()
+        job_func()
+        job_queue.task_done()
+
+
 def activate_job_schedule_in_channels(bot: TeleBot, debug_activate) -> TeleBot:
     if not debug_activate:
         return bot
@@ -49,7 +60,10 @@ def activate_job_schedule_in_channels(bot: TeleBot, debug_activate) -> TeleBot:
         get_anekdot_activate = partial(
             get_anekdot, bot=bot, channel=channel, pdf_list=pdf_list
         )
-        schedule.every(periodicity).minutes.do(run_threaded, get_anekdot_activate).tag(
+        # Threads idea https://schedule.readthedocs.io/en/stable/parallel-execution.html
+        schedule.every(periodicity).minutes.do(job_queue.put, get_anekdot_activate).tag(
             channel
         )
+        worker_thread = threading.Thread(target=worker_main)
+        worker_thread.start()
     return bot
