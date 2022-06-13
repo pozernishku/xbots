@@ -1,4 +1,5 @@
 import random
+import threading
 from io import BytesIO
 
 import pdfplumber
@@ -8,6 +9,8 @@ from telebot import TeleBot
 
 def get_anekdot(bot: TeleBot, channel, pdf_list: list) -> None:
     """Send the anekdot message."""
+    # TODO: Remove debug info
+    print("DEBUG: на потоке %s" % threading.current_thread())
     pdf_url = random.choice(pdf_list)
     pdf_bytes_io = BytesIO(requests.get(pdf_url).content)
     # BytesIO is acceptable and mentioned in the docs (it's ok that PyCharm warns)
