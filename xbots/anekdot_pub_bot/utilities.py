@@ -1,3 +1,5 @@
+import threading
+
 import jmespath
 import schedule
 from telebot import TeleBot
@@ -26,6 +28,11 @@ def prepare_settings_message(data: dict) -> str:
         ]
     )
     return settings_msg + tip_commands_message
+
+
+def run_threaded(job_func):
+    job_thread = threading.Thread(target=job_func)
+    job_thread.start()
 
 
 def activate_job_schedule_in_channels(bot: TeleBot, debug_activate) -> TeleBot:
