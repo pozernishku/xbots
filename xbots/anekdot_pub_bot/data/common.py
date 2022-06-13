@@ -6,7 +6,7 @@ import requests
 from telebot import TeleBot
 
 
-def get_anekdot(bot: TeleBot, chat_id, pdf_list: list) -> None:
+def get_anekdot(bot: TeleBot, channel, pdf_list: list) -> None:
     """Send the anekdot message."""
     pdf_url = random.choice(pdf_list)
     pdf_bytes_io = BytesIO(requests.get(pdf_url).content)
@@ -26,7 +26,7 @@ def get_anekdot(bot: TeleBot, chat_id, pdf_list: list) -> None:
     href_file_formats = pdf_url.rsplit("/", 1)[0]
     more_file_formats = f'<a href="{href_file_formats}">🗄️ Читать в другом формате</a>'
     bot.send_photo(
-        chat_id,
+        channel,
         photo=pdf_page_image._repr_png_(),
         caption=f"{pdf_page_text_piece}\n\n{continue_reading}\n{more_file_formats}",
         parse_mode="HTML",
