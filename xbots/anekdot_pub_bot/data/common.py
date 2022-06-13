@@ -7,7 +7,7 @@ import requests
 from telebot import TeleBot
 
 
-def get_anekdot(bot: TeleBot, channel, pdf_list: list) -> None:
+def get_anekdot(bot: TeleBot, channel: int, pdf_list: list) -> None:
     """Send the anekdot message."""
     # TODO: Remove debug info
     print("DEBUG: на потоке %s" % threading.current_thread())
