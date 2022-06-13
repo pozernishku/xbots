@@ -1,3 +1,4 @@
+from functools import partial
 import threading
 
 import jmespath
@@ -45,7 +46,10 @@ def activate_job_schedule_in_channels(bot: TeleBot, debug_activate) -> TeleBot:
         channel = list(param["channel"].keys())[0]
         periodicity = param["periodicity"]
         pdf_list = param["pdf_list"]
-        schedule.every(periodicity).minutes.do(get_anekdot, bot, channel, pdf_list).tag(
+        get_anekdot_activate = partial(
+            get_anekdot, bot=bot, channel=channel, pdf_list=pdf_list
+        )
+        schedule.every(periodicity).minutes.do(run_threaded, get_anekdot_activate).tag(
             channel
         )
     return bot
