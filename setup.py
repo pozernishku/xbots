@@ -13,6 +13,7 @@ setup(
     install_requires=[
         "python-dotenv",
         "pytelegrambotapi",
+        "aiogram",
         "schedule",
         "pdfplumber",
         "jmespath",
