@@ -26,4 +26,7 @@ def set_timer(message: Message, bot: TeleBot):
 
 
 def unset_timer(message: Message, bot: TeleBot):
-    schedule.clear(ANEKDOT_PUB)
+    state_context = bot.retrieve_data(message.from_user.id, message.chat.id)
+    # FIXME: Clear schedule correctly
+    channel = -100
+    schedule.clear(channel)
