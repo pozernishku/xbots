@@ -21,6 +21,7 @@ def set_timer(message: Message, bot: TeleBot):
             bot.send_message(message.chat.id, err_msg)
             return
         channel = list(channel.keys())[0]
+        # FIXME: Add pdf_list below
         schedule.every(periodicity).minutes.do(get_anekdot, bot, channel).tag(channel)
 
 
