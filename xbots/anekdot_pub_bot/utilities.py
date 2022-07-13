@@ -64,6 +64,7 @@ def activate_job_schedule_in_channels(bot: TeleBot, debug_activate) -> TeleBot:
         schedule.every(periodicity).minutes.do(job_queue.put, get_anekdot_activate).tag(
             channel
         )
-        worker_thread = threading.Thread(target=worker_main)
+        # TODO: Check if daemon=True is ok
+        worker_thread = threading.Thread(target=worker_main, daemon=True)
         worker_thread.start()
     return bot
