@@ -5,6 +5,7 @@ from io import BytesIO
 import pdfplumber
 import requests
 from telebot import TeleBot
+# TODO: Remove
 
 
 def get_anekdot(bot: TeleBot, channel: int, pdf_list: list) -> None:
